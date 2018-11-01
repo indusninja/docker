@@ -8,6 +8,7 @@ RUN apk update
 # Install dependencies
 RUN apk --no-cache add \
 	git \
+	openssh-client \
 	cmake \
 	make \
 	g++
