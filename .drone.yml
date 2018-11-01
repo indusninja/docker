@@ -1,0 +1,13 @@
+pipeline:
+  docker-opengl: 
+    image: plugins/docker
+    repo: indusninja/opengl
+    tags: latest
+    dockerfile: opengl/Dockerfile
+    secrets: [ docker_username, docker_password ]
+  docker-cpp: 
+    image: plugins/docker
+    repo: indusninja/cpp
+    tags: latest
+    dockerfile: cpp/Dockerfile
+    secrets: [ docker_username, docker_password ]
