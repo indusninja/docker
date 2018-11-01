@@ -2,14 +2,16 @@ pipeline:
   docker-opengl: 
     image: plugins/docker
     repo: indusninja/opengl
-    registry: hub.docker.com/r
     tags: latest
     dockerfile: opengl/Dockerfile
+    username: indusninja
+    password: 5h7KbN^5Mb%WQfc2
     secrets: [ docker_username, docker_password ]
   docker-cpp: 
     image: plugins/docker
     repo: indusninja/cpp
-    registry: hub.docker.com/r
     tags: latest
     dockerfile: cpp/Dockerfile
+    username: indusninja
+    password: 5h7KbN^5Mb%WQfc2
     secrets: [ docker_username, docker_password ]
