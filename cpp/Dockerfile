@@ -1,14 +1,12 @@
-FROM alpine
+FROM gcc
 
 MAINTAINER Prakash Prasad "prakash@prakashprasad.com"
 
-# Update aptitude with new repo information
-RUN apk update
-
-# Install dependencies
-RUN apk --no-cache add \
-	git \
-	openssh-client \
-	cmake \
-	make \
-	g++
+RUN \
+  sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
+  apt-get update && \
+  apt-get -y upgrade && \
+  apt-get install -y build-essential && \
+  apt-get install -y software-properties-common && \
+  apt-get install -y git cmake make && \
+  rm -rf /var/lib/apt/lists/*
