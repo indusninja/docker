@@ -11,3 +11,9 @@ pipeline:
     tags: latest
     dockerfile: cpp/Dockerfile
     secrets: [ docker_username, docker_password ]
+  docker-cpp: 
+    image: plugins/docker
+    repo: indusninja/jekyll
+    tags: latest
+    dockerfile: jekyll/Dockerfile
+    secrets: [ docker_username, docker_password ]
