@@ -15,7 +15,7 @@ jobs:
       - uses: mr-smithers-excellent/docker-build-push@v5
         name: Build and Push C++ Docker image
         with:
-          image: indusninja/c++
+          image: indusninja/cpp
           registry: docker.io
           dockerfile: Dockerfile.cpp.ci
           username: ${{ secrets.DOCKER_USERNAME }}
