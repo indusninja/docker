@@ -17,7 +17,7 @@ jobs:
         with:
           image: indusninja/c++
           registry: docker.io
-          dockerfile: ./cpp/Dockerfile
+          dockerfile: Dockerfile.cpp.ci
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       - uses: mr-smithers-excellent/docker-build-push@v5
@@ -25,7 +25,7 @@ jobs:
         with:
           image: indusninja/opengl
           registry: docker.io
-          dockerfile: ./opengl/Dockerfile
+          dockerfile: Dockerfile.opengl.ci
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       - uses: mr-smithers-excellent/docker-build-push@v5
@@ -33,6 +33,6 @@ jobs:
         with:
           image: indusninja/jekyll
           registry: docker.io
-          dockerfile: ./jekyll/Dockerfile
+          dockerfile: Dockerfile.jekyll.ci
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
