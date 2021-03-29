@@ -2,17 +2,27 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      - uses: actions/checkout@v2
+      - name: Login to Docker hub
+        env:
+          DOCKER_USER: ${{secrets.DOCKER_USER}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+        run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      - name: Build C++ Docker image
+        run: docker build . --file cpp/Dockerfile --tag indusninja/cpp:$(date +%s) --tag indusninja/cpp:latest
+      - name: Build Jekyll Docker image
+        run: docker build . --file jekyll\Dockerfile --tag indusninja/jekyll:$(date +%s) --tag indusninja/jekyll:latest
+      - name: Build OpenGL Docker image
+        run: docker build . --file opengl\Dockerfile --tag indusninja/opengl:$(date +%s) --tag indusninja/opengl:latest
+      - name: Push all Docker images
+        run: docker push --all-tags
